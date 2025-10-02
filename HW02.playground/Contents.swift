@@ -116,3 +116,48 @@ case "/":
 default:
     print ("Неверная операция")
 }
+
+// 7*) Попробуйте реализовать игру "Камень, ножницы, бумага"
+print ("Task 7")
+let input1 = "rock"
+let input2 = "scissors"
+
+checkGame(input1, input2)
+
+func checkGame (_ inp1: String, _ inp2: String) {
+    let str1 = inp1.lowercased()
+    let str2 = inp2.lowercased()
+    
+    if !validateGameValue(str1) {
+        print ("Player 1 typed wrong value")
+        return
+    }
+    
+    if !validateGameValue(str2) {
+        print ("Player 2 typed wrong value")
+        return
+    }
+    
+    switch true {
+    case str1 == str2:
+        print ("Draw")
+    case str1 == "paper" && str2 == "rock":
+        print ("Player 1 won")
+    case str1 == "scissors" && str2 == "paper":
+        print ("Player 1 won")
+    case str1 == "rock" && str2 == "scissors":
+        print ("Player 1 won")
+    case str2 == "paper" && str1 == "rock":
+        print ("Player 2 won")
+    case str2 == "scissors" && str1 == "paper":
+        print ("Player 2 won")
+    case str2 == "rock" && str1 == "scissors":
+        print ("Player 2 won")
+    default:
+        print ("Error")
+    }
+}
+
+func validateGameValue (_ input: String) -> Bool {
+    return input == "rock" || input == "paper" || input == "scissors"
+}
